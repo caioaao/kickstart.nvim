@@ -869,6 +869,8 @@ require('lazy').setup({
     },
     config = true,
   },
+
+  'tpope/vim-fugitive',
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
