@@ -226,6 +226,7 @@ vim.opt.rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
+  'tpope/vim-fugitive',
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
   -- NOTE: Plugins can also be added by using a table,
@@ -849,28 +850,6 @@ require('lazy').setup({
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
   -- { import = 'custom.plugins' },
-
-  {
-    'NeogitOrg/neogit',
-    keys = {
-      {
-        '<leader>g',
-        function()
-          require('neogit').open()
-        end,
-        mode = '',
-        desc = '[F]ormat buffer',
-      },
-    },
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'sindrets/diffview.nvim',
-      'nvim-telescope/telescope.nvim',
-    },
-    config = true,
-  },
-
-  'tpope/vim-fugitive',
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
