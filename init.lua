@@ -230,9 +230,11 @@ require('lazy').setup({
     'tpope/vim-fugitive',
     config = function()
       vim.api.nvim_create_user_command('Gco', 'G checkout -b <args> origin', { nargs = 1 })
-      vim.api.nvim_create_user_command('Gpo', 'G push -u origin HEAD', {})
+      vim.api.nvim_create_user_command('Gpo', 'G push -u origin HEAD <args>', { nargs = '*' })
       vim.api.nvim_create_user_command('Gro', 'G rebase origin/main', {})
       vim.api.nvim_create_user_command('Gri', 'G rebase --interactive origin/main', {})
+      vim.api.nvim_create_user_command('Gra', 'G rebase --abort', {})
+      vim.api.nvim_create_user_command('Grc', 'G rebase --continue', {})
     end,
   },
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
