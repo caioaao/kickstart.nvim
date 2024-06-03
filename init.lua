@@ -226,7 +226,15 @@ vim.opt.rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
-  'tpope/vim-fugitive',
+  {
+    'tpope/vim-fugitive',
+    config = function()
+      vim.api.nvim_create_user_command('Gco', 'G checkout -b <args> origin', { nargs = 1 })
+      vim.api.nvim_create_user_command('Gpo', 'G push -u origin HEAD', {})
+      vim.api.nvim_create_user_command('Gro', 'G rebase origin/main', {})
+      vim.api.nvim_create_user_command('Gri', 'G rebase --interactive origin/main', {})
+    end,
+  },
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
   -- NOTE: Plugins can also be added by using a table,
