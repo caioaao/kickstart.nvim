@@ -154,6 +154,12 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- Do not fold past 4 levels deep
+vim.opt.foldnestmax = 4
+
+-- Do not fold stuff by default
+vim.opt.foldlevelstart = 99
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -841,6 +847,10 @@ require('lazy').setup({
       --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
       --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
       --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+
+      -- Use treesitter as source for code folding
+      vim.opt.foldmethod = 'expr'
+      vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
     end,
   },
   {
